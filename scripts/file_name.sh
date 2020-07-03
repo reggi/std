@@ -2,6 +2,6 @@
 USAGE="<path>"
 DESC="provides basename of full path without extention"
 
-fileName () {
-    echo $(basename ${1%.*})
+file_name () {
+  echo $(basename ${1%.*})
 }

@@ -27,15 +27,15 @@ for FILE in $FILES; do
     fi
 done
 
-namespaceRmDash () {
+namespace_rm_dash () {
     echo "$1" | tr -d -
 }
 
-namespaceUpperCase () {
+namespace_upper_case () {
     echo "$(echo "${1:0:1}" | tr '[:lower:]' '[:upper:]')${1:1}"
 }
 
-showUsage {
+show_usage () {
     printf "Usage: <...args>\n"
     printf "$TUSAGE"
     exit 0
@@ -44,5 +44,5 @@ showUsage {
 if [[ ! -z "$@" && "$FOUND" = true ]]; then
     eval "$@"
 else
-    showUsage
+    show_usage
 fi
