@@ -5,21 +5,14 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  lint-package:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: npm ci
+    - run: ./run lint-scripts
     - run: ./run lint-package
-  lint-ts-node:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
     - run: ./run eslint
-  lint-scripts: 
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - run: ./run lint_scripts
   test-ts-node:
     runs-on: ubuntu-latest
     strategy:
@@ -32,6 +25,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: ./run test_ts_node
-      shell: bash
-    
+    - run: ./run test-ts-node
