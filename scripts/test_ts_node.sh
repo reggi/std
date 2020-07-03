@@ -1,6 +1,4 @@
 #!/bin/bash
-# shellcheck disable=SC2034
-
 BASEDIR="$(cd "$(dirname "$0")" || exit; pwd)"
 # shellcheck source=/dev/null
 . "$BASEDIR"/npm_bin.sh

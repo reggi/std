@@ -1,4 +1,4 @@
-# shellcheck disable=SC2034
+#!/bin/bash
 USAGE=""
 DESC="runs shellcheck on scripts directory"
 

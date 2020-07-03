@@ -1,6 +1,5 @@
 #!/bin/bash
-
-BASEDIR=$(dirname "$0")
+BASEDIR="$(cd "$(dirname "$0")" || exit; pwd)"
 # shellcheck source=/dev/null
 . "$BASEDIR"/file_name.sh
 # shellcheck source=/dev/null
