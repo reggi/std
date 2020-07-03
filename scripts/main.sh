@@ -5,6 +5,8 @@ BASEDIR=$(dirname "$0")
 . "$BASEDIR"/file_name.sh
 # shellcheck source=/dev/null
 . "$BASEDIR"/underscore.sh
+# shellcheck source=/dev/null
+. "$BASEDIR"/hyphen.sh
 
 FILES="$(find "$BASEDIR" ! -name 'main.sh' -type f -name '*.sh' -print | sort -t '\0' -n)"
 TUSAGE="\\n"
