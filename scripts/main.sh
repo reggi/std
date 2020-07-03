@@ -1,6 +1,6 @@
 #!/bin/bash
 BASEDIR=$(dirname "$0")
-# shellcheck source=./file_name.sh
+# shellcheck source=/dev/null
 . "$BASEDIR"/file_name.sh
 
 # define variables
@@ -12,23 +12,20 @@ FOUND=false
 
 # loop over script files
 for FILE in $FILES; do
-    if [ -f "$FILE" ]; then
-        # shellcheck source=/dev/null
-        . "$FILE" --source-only
-        FNAME=$(file_name "$FILE")
-
-        BUSAGE="$FNAME $USAGE"
-        TUSAGE="$TUSAGE\\t$BUSAGE\\n              $DESC\n\n"
-        USAGE=""
-        if [ "$1" == "$FNAME" ]; then
-          if [ "$FOUND" == true ]; then
-            FOUND=true
-          fi
-        fi
+  if [ -f "$FILE" ]; then
+    # shellcheck source=/dev/null
+    . "$FILE" --source-only
+    FNAME=$(file_name "$FILE")
+    BUSAGE="$FNAME $USAGE"
+    TUSAGE="$TUSAGE\\t$BUSAGE\\n              $DESC\n\n"
+    USAGE=""
+    if [ "$1" = "$FNAME" ]; then
+      FOUND=true
     fi
+  fi
 done
 
-if [ "$FOUND" == true ]; then
+if [ "$FOUND" = true ]; then
   eval "$@"
 else
   printf "Usage: <...args>\n"
