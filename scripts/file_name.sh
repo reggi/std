@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 USAGE="<path>"
 DESC="provides basename of full path without extention"
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 USAGE=""
 DESC="Deletes all .DS_Store files recursivley"
 

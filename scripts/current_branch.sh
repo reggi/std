@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 USAGE=""
 DESC="provides current git branch"
 

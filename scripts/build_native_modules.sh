@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 USAGE=""
 DESC="builds a list of native node modules"
 

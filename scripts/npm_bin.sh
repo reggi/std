@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 USAGE=""
 DESC="runs a script from ./node_modules/.bin"
 BASEDIR="$(cd "$(dirname "$0")"; pwd)"

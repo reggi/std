@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 USAGE=""
 DESC="test ts-node files"
 BASEDIR="$(cd "$(dirname "$0")"; pwd)"
