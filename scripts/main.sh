@@ -1,4 +1,5 @@
 #!/bin/bash
+
 BASEDIR=$(dirname "$0")
 # shellcheck source=/dev/null
 . "$BASEDIR"/file_name.sh
@@ -26,7 +27,7 @@ for FILE in $FILES; do
 done
 
 if [ "$FOUND" = true ]; then
-  eval "$@"
+  $@
 else
   printf "Usage: <...args>\n"
   printf "$TUSAGE"
