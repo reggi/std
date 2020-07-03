@@ -1,3 +1,3 @@
-function install () {
+install () {
   npm install
 }

@@ -27,16 +27,16 @@ for FILE in $FILES; do
     fi
 done
 
-function namespaceRmDash () {
+namespaceRmDash () {
     echo "$1" | tr -d -
 }
 
-function namespaceUpperCase () {
+namespaceUpperCase () {
     echo "$(echo "${1:0:1}" | tr '[:lower:]' '[:upper:]')${1:1}"
 }
 
-function showUsage {
-    printf "Usage: function <...args>\n"
+showUsage {
+    printf "Usage: <...args>\n"
     printf "$TUSAGE"
     exit 0
 }

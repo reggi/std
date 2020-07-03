@@ -2,6 +2,6 @@
 USAGE=""
 DESC="provides current git branch"
 
-function current_branch () {
+current_branch () {
   git branch --show-current
 }
