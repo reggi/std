@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BASEDIR=$(dirname "$0")
-source $BASEDIR/file_name.sh
+. $BASEDIR/file_name.sh
 
 # define variables
 FILES="$(find "$BASEDIR" ! -name 'main.sh' -type f -name '*.sh' -print | sort -t '\0' -n)"
