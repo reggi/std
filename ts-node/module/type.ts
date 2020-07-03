@@ -1,4 +1,5 @@
-import * as module from 'module'
+import * as nativeModules from './native_modules.json'
+import { matchUrl } from './match_url'
 
 export enum Type { 
   LOCAL = "LOCAL",
@@ -10,9 +11,9 @@ export enum Type {
 export function type (m: string) {
   const isLocal = m.match(/^\.\.\/|^\.\/|^\//)
   if (isLocal) return Type.LOCAL
-  const isNodeNative = module.builtinModules.includes(m)
+  const isNodeNative = nativeModules.includes(m)
   if (isNodeNative) return Type.NATIVE_NODE
-  const isUrl = m.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/)
+  const isUrl = matchUrl(m)
   if (isUrl) return Type.URL
   return Type.NPM
 }

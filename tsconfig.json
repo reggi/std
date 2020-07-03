@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["es2016.array.include"],
+    "lib": ["es2016.array.include", "DOM"],
     "types": ["node", "mocha"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "target": "ES5"
   }
 }
