@@ -16,7 +16,7 @@ for FILE in $FILES; do
     if [ -f "$FILE" ]; then
         # shellcheck source=/dev/null
         . "$FILE" --source-only
-        FNAME=`fileName $FILE`
+        FNAME=`file_name $FILE`
 
         BUSAGE="$FNAME $USAGE"
         TUSAGE="$TUSAGE\\t$BUSAGE\\n              $DESC\n\n"
