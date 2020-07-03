@@ -20,13 +20,15 @@ for FILE in $FILES; do
         BUSAGE="$FNAME $USAGE"
         TUSAGE="$TUSAGE\\t$BUSAGE\\n              $DESC\n\n"
         USAGE=""
-        if [[ "$1" == "$FNAME"  ||  "$FOUND" == true ]]; then
+        if [ "$1" == "$FNAME" ]; then
+          if [ "$FOUND" == true ]; then
             FOUND=true
+          fi
         fi
     fi
 done
 
-if [[ "$FOUND" = true ]]; then
+if [ "$FOUND" == true ]; then
   eval "$@"
 else
   printf "Usage: <...args>\n"
