@@ -104,25 +104,23 @@ export class ModuleUrl extends ExtendUrl{
     return EXTS
   }
 
-  discover() {
-    if (this.hasExt) return [this]
-    const LINIAGE_EXT = this.extLiniage
+  discover(resolve?: string) {
+    const STATE = resolve ? this.resolve(resolve) : this
+    if (this.hasExt) return [STATE]
+    const LINIAGE_EXT = STATE.extLiniage
     const DEFAULT_EXTS = ['.js', '.json']
     const EXTS = [...LINIAGE_EXT, ...DEFAULT_EXTS].filter(unique).filter(truthy)
     
     const APPENDED = EXTS.map(EXT => {
-      const n = this.resolve(`./${this.filename}${EXT}`)
+      const n = STATE.resolve(`./${STATE.filename}${EXT}`)
       n.ext = EXT
       return n
     })
-      
     const INDEXED = EXTS.map(EXT => {
-      const n = this.resolve(`./${this.filename}/index${EXT}`)
+      const n = STATE.resolve(`./${STATE.filename}/index${EXT}`)
       return n
     })
-    
-    const PACKAGE = this.resolve(`./${this.filename}/package.json`)
-
+    const PACKAGE = STATE.resolve(`./${STATE.filename}/package.json`)
     return [...APPENDED, PACKAGE, ...INDEXED]
   }
 
