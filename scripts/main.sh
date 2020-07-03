@@ -4,7 +4,7 @@ BASEDIR=$(dirname "$0")
 # shellcheck source=/dev/null
 . "$BASEDIR"/file_name.sh
 # shellcheck source=/dev/null
-. "$BASEDIR"/hyphen_to_underscore.sh
+. "$BASEDIR"/underscore.sh
 
 FILES="$(find "$BASEDIR" ! -name 'main.sh' -type f -name '*.sh' -print | sort -t '\0' -n)"
 TUSAGE="\\n"
@@ -12,7 +12,7 @@ USAGE=""
 DESC=""
 FOUND=false
 SAVE=$1
-FIRST=$(hyphen_to_underscore "$SAVE")
+FIRST=$(underscore "$SAVE")
 
 # loop over script files
 for FILE in $FILES; do
@@ -20,7 +20,8 @@ for FILE in $FILES; do
     # shellcheck source=/dev/null
     . "$FILE"
     FNAME=$(file_name "$FILE")
-    BUSAGE=$(printf '%-30s' "$FNAME $USAGE")   
+    PRETTYNAME=$(hyphen "$FNAME")
+    BUSAGE=$(printf '%-30s' "$PRETTYNAME $USAGE")   
     TUSAGE="$TUSAGE $BUSAGE $DESC\n"
     USAGE=""
     if [ "$1" = "$FNAME" ]; then
