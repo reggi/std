@@ -1,7 +1,9 @@
 #!/bin/bash
-USAGE="<path>"
-DESC="provides basename of full path without extention"
+
+# shellcheck disable=SC2034
+USAGE=""
+DESC="returns a string without extension"
 
 file_name () {
-  echo $(basename ${1%.*})
+  basename "${1%.*}"
 }
