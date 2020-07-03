@@ -1,0 +1,3 @@
+function install () {
+  npm install
+}

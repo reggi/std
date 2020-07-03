@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "lib": ["es2016.array.include"],
+    "types": ["node", "mocha"],
+    "resolveJsonModule": true
+  }
+}
