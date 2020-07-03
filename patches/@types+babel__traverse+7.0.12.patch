@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/babel__traverse/index.d.ts b/node_modules/@types/babel__traverse/index.d.ts
+index 1661712..22f2148 100644
+--- a/node_modules/@types/babel__traverse/index.d.ts
++++ b/node_modules/@types/babel__traverse/index.d.ts
+@@ -193,7 +193,7 @@ export class NodePath<T = Node> {
+     skipKeys: object;
+     parentPath: NodePath;
+     context: TraversalContext;
+-    container: object | object[];
++    container: Node | Node[];
+     listKey: string;
+     inList: boolean;
+     parentKey: string;

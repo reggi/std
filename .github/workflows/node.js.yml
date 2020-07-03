@@ -5,6 +5,16 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
+  lint-package:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./run lint-package
+  lint-ts-node:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./run eslint
   lint-scripts: 
     runs-on: ubuntu-latest
     steps:

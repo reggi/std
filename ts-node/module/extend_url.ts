@@ -1,105 +1,104 @@
 /** extendable version or URL */
-export class ExtendUrl { 
+export class ExtendUrl {
   parsed: URL
-  
-  constructor(url: string, base?: string | URL | ExtendUrl) { 
+
+  constructor (url: string, base?: string | URL | ExtendUrl) {
     this.parsed = new URL(url, base)
   }
 
-  get hash() { 
+  get hash () {
     return this.parsed.hash
   }
 
-  set hash(value) { 
+  set hash (value) {
     this.parsed.hash = value
   }
 
-  get host() { 
+  get host () {
     return this.parsed.host
   }
 
-  set host(value) { 
+  set host (value) {
     this.parsed.host = value
   }
 
-  get hostname() { 
+  get hostname () {
     return this.parsed.hostname
   }
 
-  set hostname(value) { 
+  set hostname (value) {
     this.parsed.hostname = value
   }
 
-  get href() { 
+  get href () {
     return this.parsed.href
   }
 
-  set href(value) { 
+  set href (value) {
     this.parsed.href = value
   }
 
-  get origin() { 
+  get origin () {
     return this.parsed.origin
   }
 
-  get password() { 
+  get password () {
     return this.parsed.password
   }
 
-  set password(value) { 
+  set password (value) {
     this.parsed.password = value
   }
 
-  get pathname() { 
+  get pathname () {
     return this.parsed.pathname
   }
-  
-  set pathname(value) {
+
+  set pathname (value) {
     this.parsed.pathname = value
   }
 
-  get port() { 
+  get port () {
     return this.parsed.port
   }
 
-  set port(value) { 
+  set port (value) {
     this.parsed.port = value
   }
 
-  get protocol() { 
+  get protocol () {
     return this.parsed.protocol
   }
 
-  set protocol(value) { 
+  set protocol (value) {
     this.parsed.protocol = value
   }
 
-  get search() { 
+  get search () {
     return this.parsed.search
   }
 
-  set search(value) { 
+  set search (value) {
     this.parsed.search = value
   }
 
-  get searchParams() { 
+  get searchParams () {
     return this.parsed.searchParams
   }
 
-  get username() { 
+  get username () {
     return this.parsed.username
   }
 
-  set username(value) { 
+  set username (value) {
     this.parsed.username = value
   }
 
-  toString() { 
+  toString () {
     return this.parsed.toString()
   }
 
-  toJSON() { 
+  toJSON () {
     return this.parsed.toJSON()
   }
-
 }
