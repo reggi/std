@@ -25,5 +25,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: ./run test_ts_node
+    - run: bash ./run test_ts_node
       shell: bash
