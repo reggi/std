@@ -27,7 +27,7 @@ for FILE in $FILES; do
 done
 
 if [ "$FOUND" = true ]; then
-  $@
+  "$@"
 else
   printf "Usage: <...args>\n"
   printf "$TUSAGE"
