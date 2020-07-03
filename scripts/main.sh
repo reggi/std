@@ -2,7 +2,7 @@
 
 BASEDIR=$(dirname "$0")
 # shellcheck source=/dev/null
-. "$BASEDIR"/file_name.sh --source-only
+. "$BASEDIR"/file_name.sh
 
 FILES="$(find "$BASEDIR" ! -name 'main.sh' -type f -name '*.sh' -print | sort -t '\0' -n)"
 TUSAGE="\\n"
@@ -14,7 +14,7 @@ FOUND=false
 for FILE in $FILES; do
   if [ -f "$FILE" ]; then
     # shellcheck source=/dev/null
-    . "$FILE" --source-only
+    . "$FILE"
     FNAME=$(file_name "$FILE")
     BUSAGE="$FNAME $USAGE"
     TUSAGE="$TUSAGE\\t$BUSAGE\\n              $DESC\n\n"
