@@ -2,8 +2,9 @@
 BASEDIR="$(cd "$(dirname "$0")" || exit; pwd)"
 # shellcheck source=/dev/null
 . "$BASEDIR"/npm_bin.sh
-
+# shellcheck disable=SC2034
 USAGE=""
+# shellcheck disable=SC2034
 DESC="test ts-node files"
 
 test_ts_node () {

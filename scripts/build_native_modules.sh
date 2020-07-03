@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2034
 USAGE="" 
 DESC="builds a list of native node modules"
 

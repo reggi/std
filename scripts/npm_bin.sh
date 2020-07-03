@@ -1,5 +1,7 @@
 #!/bin/bash
+# shellcheck disable=SC2034
 USAGE="<bin> <...args>"
+# shellcheck disable=SC2034
 DESC="executes npm binary from node_modules"
 BASEDIR="$(cd "$(dirname "$0")" || exit; pwd)"
 
