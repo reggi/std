@@ -8,7 +8,5 @@ BASEDIR="$(cd "$(dirname "$0")" || exit; pwd)"
 . "$BASEDIR"/npm_bin.sh
 
 test_ts_node () {
-  echo 'test_ts_node'
   npm_bin mocha -r ts-node/register "$BASEDIR/../ts-node/module/*_test.ts"
-  echo 'test_ts_node'
 }
