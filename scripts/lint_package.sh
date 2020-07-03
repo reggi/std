@@ -1,7 +1,7 @@
 #!/bin/bash
 BASEDIR="$(cd "$(dirname "$0")" || exit; pwd)"
 # shellcheck source=/dev/null
-. "$BASEDIR"/test_ts_node.sh
+. "$BASEDIR"/npm_bin.sh
 # shellcheck disable=SC2034
 USAGE=""
 # shellcheck disable=SC2034
