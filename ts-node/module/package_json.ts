@@ -1,4 +1,4 @@
-import { ModuleUrl } from './module_url';
+import { ModuleUrl } from './module_url'
 
 interface ModuleMatch {
   /** the url of the matched package.json file */
@@ -17,7 +17,7 @@ interface ModuleMatch {
  * files indexed by their id. Given a url and a module, should respond either
  * with (1) an error because no match was found (2) report that module used was
  * must resort to native node module (3) placement of top level "general"
- * package placement (4) placemnt of bottom level "specific" package placement
+ * package placement (4) placement of bottom level "specific" package placement
  * to handle duplicate dependencies with differing module versions.
  */
 export class PackageJson {

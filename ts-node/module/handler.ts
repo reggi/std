@@ -6,14 +6,16 @@ import { kind, Kind } from './kind'
 import { ResolvedModule, resolveModule } from './resolve_module'
 import * as fs from 'fs'
 import { resolvePackages } from './resolve_packages'
+import { matchUrl } from './match_url'
 
 const debug = (...msg) => {
   msg.forEach(m => console.log(m))
 }
 
-const SAVE_LOCATION = path.join(__filename, '../../download')
+const SAVE_LOCATION = path.join('./download')
 const URL_LIST: Array<string | undefined> = []
 const PKG_STORE = {}
+const LOCAL_FILE = Symbol('LOCAL_FILE')
 const FILE = Symbol('FILE')
 const DOWNLOAD = Symbol('DOWNLOAD')
 const MODULE = Symbol('MODULE')
@@ -149,4 +151,24 @@ e.on(DOWNLOAD, (url: string | ModuleUrl) => {
   }).catch(e => { throw e })
 })
 
-e.emit(DOWNLOAD, 'https://raw.githubusercontent.com/reggi/modules/master/import-examples/js-pkg')
+e.on(LOCAL_FILE, (file: string) => {
+  const deps = parser(file)
+  const handle = (mod: string) => {
+    const k = kind(mod)
+    if (k === Kind.URL) {
+      e.emit(DOWNLOAD, mod)
+    }
+  }
+  deps.requires.map(handle)
+  deps.imports.map(handle)
+  deps.urlImports.map(handle)
+})
+
+const args = process.argv.slice(2)
+
+if (matchUrl(args[0])) {
+  e.emit(DOWNLOAD, args[0])
+} else {
+  const file = fs.readFileSync(args[0], 'utf8')
+  e.emit(LOCAL_FILE, file)
+}
