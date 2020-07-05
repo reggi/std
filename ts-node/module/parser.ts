@@ -52,6 +52,7 @@ export function getDeclared (node: Node, variable: string[] | string) {
 }
 
 export function parser (code: string) {
+  if (typeof code !== 'string') throw new Error('parser needs code')
   const error = (node: Node, message: string) => {
     const line = node.loc?.start.line
     if (node.loc !== null) {

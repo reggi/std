@@ -1,0 +1,7 @@
+{
+  "name": "mjs-pkg-tilde-nested",
+  "main": "index.ts",
+  "dependencies": {
+    "~": "file:../mjs-pkg-tilde"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "js-pkg-tilde-nested",
+  "main": "index.js",
+  "dependencies": {
+    "~": "file:../js-pkg-tilde/"
+  }
+}

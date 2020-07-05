@@ -89,7 +89,7 @@ export class ModuleUrl extends ExtendUrl {
     return u
   }
 
-  get extLiniage () {
+  get extLineage () {
     const EXTS: string[] = []
     const recursion = (instance: ModuleUrl) => {
       const STATE = instance
@@ -102,12 +102,18 @@ export class ModuleUrl extends ExtendUrl {
     return EXTS
   }
 
-  discover (resolve?: string) {
+  /**
+   * Given a url and possible resolve path will return list of possible urls
+   * that a node module can be, given that modules can be imported without an
+   * extension and may ne nested within a folder as an index.
+   * */
+  discoverModule (resolve?: string, omitPackage: boolean = false) {
     const STATE = resolve !== undefined ? this.resolve(resolve) : this
     if (STATE.hasExt) return [STATE]
-    const LINIAGE_EXT = STATE.extLiniage
+    // this never prioritizes .json even if parent is .json
+    const LINEAGE_EXT = STATE.extLineage.filter(ext => ext !== '.json')
     const DEFAULT_EXTS = ['.js', '.json']
-    const EXTS = [...LINIAGE_EXT, ...DEFAULT_EXTS].filter(unique).filter(truthy)
+    const EXTS = [...LINEAGE_EXT, ...DEFAULT_EXTS].filter(unique).filter(truthy)
     const APPENDED = EXTS.map(EXT => {
       const n = STATE.resolve(`./${STATE.filename}${EXT}`)
       n.ext = EXT
@@ -117,18 +123,35 @@ export class ModuleUrl extends ExtendUrl {
       const n = STATE.resolve(`./${STATE.filename}/index${EXT}`)
       return n
     })
-    const PACKAGE = STATE.resolve(`./${STATE.filename}/package.json`)
-    return [...APPENDED, PACKAGE, ...INDEXED]
+    if (!omitPackage) {
+      const PACKAGE = STATE.resolve(`./${STATE.filename}/package.json`)
+      return [...APPENDED, PACKAGE, ...INDEXED]
+    } else {
+      return [...APPENDED, ...INDEXED]
+    }
+  }
+
+  /**
+   * Similar to discoverModule, but used specifically for package.main, it has
+   * two main differences discovered from some testing (1) a package.main path
+   * cannot link to a directory with a package.json leading to another
+   * package.main (2) main entries can omit current directory "./" whereas for a
+   * module it would be treated as a npm or native module [eg. "lib/src.js"]
+   * */
+  discoverMain (resolve?: string) {
+    return this.discoverModule(resolve)
   }
 
   searchPath (fileName: string) {
     let state = ModuleUrl.parse(this)
-    const current = state.resolve(`./${fileName}`).toString()
-    const potential = Array.from(Array(state.levels - 1).keys()).map(i => {
+    const potentials: ModuleUrl[] = []
+    state = state.resolve(`./${fileName}`)
+    potentials.push(state)
+    Array.from(Array(state.levels - 1).keys()).forEach(i => {
       state = state.resolve(`../${fileName}`)
-      return state.toString()
+      potentials.push(state)
     })
-    return [current, ...potential]
+    return potentials
   }
 
   get pkgPotential () {

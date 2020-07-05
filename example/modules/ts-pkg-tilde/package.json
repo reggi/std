@@ -1,0 +1,7 @@
+{
+  "name": "ts-pkg-tilde",
+  "main": "index.ts",
+  "dependencies": {
+    "~": "file:."
+  }
+}

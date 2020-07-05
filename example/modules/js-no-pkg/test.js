@@ -1,0 +1,6 @@
+const assert = require('assert')
+const main = require('./index')
+assert.strictEqual(main.id, 'js-no-pkg')
+assert.strictEqual(main.foo, 'foo')
+assert.strictEqual(main.bar, 'bar')
+assert.strictEqual(main.baz, 'baz')

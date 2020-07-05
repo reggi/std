@@ -1,0 +1,9 @@
+{ 
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "~": ["../ts-pkg-tilde/index.ts"],
+      "~/*": ["../ts-pkg-tilde/*"]
+    }
+  }
+}

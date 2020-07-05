@@ -1,0 +1,7 @@
+{
+  "name": "mjs-pkg-tilde",
+  "main": "index.mjs",
+  "dependencies": {
+    "~": "file:."
+  }
+}
