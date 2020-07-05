@@ -3,6 +3,8 @@ import bar from '~/bar'
 import baz from '~/baz'
 
 export default {
-  foo, bar, baz,
+  foo,
+  bar,
+  baz,
   id: 'ts-pkg-tilde'
 }

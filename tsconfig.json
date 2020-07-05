@@ -14,5 +14,8 @@
       "https://*": ["download/https/*"]
     }
   },
-  "include": ["./ts-node/**/*"],
+  "include": [
+    "./ts-node/**/*",
+    "./example/modules/**/*"
+  ],
 }
